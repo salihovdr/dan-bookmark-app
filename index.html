@@ -16,8 +16,12 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
 
+  <!-- Font Awesome Icon Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles/float-grid.css">
+  <link rel="stylesheet" href="styles/form.css">
   <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
@@ -31,25 +35,129 @@
     </header>
   </div>
     <main role="main">
-      <section class="row" role="contentinfo" aria-label="Star War Character Cards">
-    
-        <article class="col-12" role="contentinfo" aria-label="Rey">
+
+      <form id="bookmark-form">
+        <fieldset name="bookmark-info">
+
+          <legend>Add Bookmark</legend>
+      
+          <label for="bookmark-url">URL</label>
+          <input type="url" name="url" class="js-bookmark-url" placeholder="http://...">
+      
+          <label for="bookmark-title">Title</label>
+          <input type="text" name="title" placeholder="Javascript video tutorials">
+
+          <label for="bookmark-description">Description:</label>
+          <textarea name="description" rows="4" cols="33" maxlength="600" wrap="hard"></textarea>
+
+          <p>Assign rating:</p>
+            <div>
+              <input type="radio" id="rating1" name="rating" value="1 star" checked>
+              <label for="contactChoice1">*</label>
+            
+              <input type="radio" id="rating2" name="rating" value="2 stars">
+              <label for="contactChoice2">**</label>
+            
+              <input type="radio" id="rating3" name="rating" value="3 stars">
+              <label for="contactChoice3">***</label>
+
+              <input type="radio" id="rating4" name="rating" value="4 stars">
+              <label for="contactChoice3">****</label>
+
+              <input type="radio" id="rating5" name="rating" value="5 stars">
+              <label for="contactChoice3">*****</label>
+            </div>
+          </fieldset>
+
+        <button class="add-btn" type="submit">Add</button>
+      </form>
+
+
+      <form id = "rating-filter-form" action="">
+      <label for="rating-select">Filter by rating:</label>
+      
+      <select id="rating-select">
+        <option value="5">5 stars</option>
+        <option value="4+"> 4+ stars</option>
+        <option value="3+r">3+ star</option>
+        <option value="2+">4+ star</option>
+        <option value="none" selected>Only show...</option>
+      </select>
+      </form>
+
+      <section class="row" role="contentinfo" aria-label="bookmarks">
+        <ul>
+
+        <li>
+          <article class="col-12" role="contentinfo" aria-label="Rey">
           <div class="box">
             <div class="description">
-              <h2>Rey</h2>
-              <p>Protagonist, from Jakku</p>
+              <h2>Rey Protagonist, from Jakku</h2>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <p>
+                I'm not going anywhere. They're going to execute her. Look, a few minutes ago you said you didn't want to just wait here
+                to be captured. Now all you want to do is stay. Marching into the detention area is not what I had in mind. But they're
+                going to kill her! Better her than me... She's rich. Rich? Yes. Rich, powerful!
+              </p>
+              <div class="bookmark-item-controls">
+                <button class="bookmark-item-edit js-item-edit">
+                  <span class="button-label">edit</span>
+                </button>
+                <button class="bookmark-item-delete js-item-delete">
+                  <span class="button-label">delete</span>
+                </button>
+              </div>
             </div>
           </div>    
         </article>
-  
+        </li>
+        <li>
         <article class="col-12" role="contentinfo" aria-label="Yoda">
           <div class="box">
             <div class="description">
-              <h2>Yoda</h2>
-              <p>Wise old Jedi master</p>
+              <h2>Yoda Wise old Jedi master</h2>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
             </div>
           </div>    
         </article>
+        </li>
+        <li>
+        <article class="col-12" role="contentinfo" aria-label="Rey">
+          <div class="box">
+            <div class="description">
+              <h2>Rey Protagonist, from Jakku</h2>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </div>
+        </article>
+        </li>
+        <li>
+        <article class="col-12" role="contentinfo" aria-label="Rey">
+          <div class="box">
+            <div class="description">
+              <h2>Rey Protagonist, from Jakku</h2>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+            </div>
+          </div>
+        </article>
+        </li>
+        </ul>
       </section>
     </main>
   </body>

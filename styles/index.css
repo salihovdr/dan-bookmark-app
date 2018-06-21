@@ -14,13 +14,13 @@ header {
     ),
     url(../assets/rawpixel-600780-unsplash.jpg);
   background-size: cover;
-  height: 65vh;
+  height: 50vh;
 }
 
 .title {
   position: absolute;
-  top: 47%;
-  left: 37%;
+  top: 37%;
+  left: 26%;
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
@@ -47,7 +47,7 @@ main {
 
 
 .box {
-	border: 1px solid #EEEEEE;
+	border: 1px solid rgb(211, 198, 198);
 	margin-bottom: 17px;
 }
 
@@ -65,4 +65,12 @@ main {
 .description > h2 {
 	font-size: 0.9em;
 	margin-bottom: 5px;
+}
+
+ul  {
+  list-style: none;
+}
+
+.checked {
+    color: orange;
 }
