@@ -30,14 +30,13 @@
         <header role="banner">
             <section>
                 <div class="title">
-                    <h1>My Bookmarks</h1>
+                    <h1>My bookmarks</h1>
                 </div>
             </section>
         </header>
     </div>
     <main role="main">
-
-        <form id="bookmark-form">
+        <form id="bookmark-form" aria-label="new bookmark form">
             <ul class="form-style-1">
                 <li>
                     <label for="bookmark-title">Title<span class="required">*</span></label>
@@ -73,7 +72,7 @@
             <span class="button-label">ADD NEW</span>
         </button>
 
-        <form id="rating-filter-form" action="">
+        <form id="rating-filter-form" action="" aria-label="bookmark rating filter form" >
             <label for="rating-select">Filter by rating:</label>
 
             <select id="rating-select">
@@ -85,8 +84,8 @@
             </select>
         </form>
 
-        <section role="contentinfo" aria-label="list of bookmarks">
-            <ul class="bookmark-list js-bookmark-list">
+        <section role="contentinfo" aria-label="list of bookmarks"></section>
+            <ul class="bookmark-list js-bookmark-list" ria-label="list of bookmarks"></ul>>
             </ul>
         </section>
     </main>

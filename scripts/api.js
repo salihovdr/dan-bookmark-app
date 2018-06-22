@@ -4,12 +4,12 @@
 const api = (function () {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/dan';
 
-  //works
+  //get bookmarks
   const getBookmarks = function (callback) {
     $.getJSON(`${BASE_URL}/bookmarks`, callback);
   };
 
-  //works
+  //create bookmark
   const createBookmark = (bookmarkObj, callback) => {
     const newBookmark = JSON.stringify(bookmarkObj);
 
@@ -19,23 +19,11 @@ const api = (function () {
       contentType: 'application/json',
       data: newBookmark,
       success: callback,
-      error: Snackbar.show({text: 'Bad request sent...'})
+      error: () => Snackbar.show({text: 'Title and url data required. Try again..'})
     });
   };
 
-  //works
-  const updateBookmark = (id, updateData, callback) => {
-    $.ajax({
-      url: `${BASE_URL}/items/${id}`,
-      method: 'PATCH',
-      contentType: 'application/json',
-      data: JSON.stringify(updateData),
-      success: callback,
-      error: callback
-    });
-  };
-
-  //works
+  //delete bookmark
   const deleteBookmark = (id, callback) => {
     $.ajax({
       url: `${BASE_URL}/bookmarks/${id}`,
@@ -49,7 +37,7 @@ const api = (function () {
   return {
     getBookmarks,
     createBookmark,
-    updateBookmark,
+    //updateBookmark,
     deleteBookmark
   };
 }());
