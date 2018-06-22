@@ -21,7 +21,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/snackbar.min.css">
+    <link rel="stylesheet" href="styles/index.css"> 
+    <link rel="stylesheet" href="styles/bookmarkForm.css"> 
 </head>
 
 <body>
@@ -34,7 +36,39 @@
         </header>
     </div>
     <main role="main">
-        <section id="form-section"></section>
+
+        <form id="bookmark-form">
+            <ul class="form-style-1">
+                <li>
+                    <label for="bookmark-title">Title<span class="required">*</span></label>
+                    <input type="text" name="title" class="field-divided" placeholder="Title">&nbsp;
+                </li>
+                <li>
+                    <label for="bookmark-url">URL<span class="required">*</span></label>
+                    <input type="url" name="url" class="field-long" placeholder="http://..">
+                </li>
+                <li>
+                    <label for="bookmark-description">Description</label>
+                    <textarea name="desc" id="field5" class="field-long field-textarea"></textarea>
+                </li>
+
+                <li>
+                    <label for="bookmark-rating">Rating</label>
+                    <select name="rating" class="field-select">
+                        <option id="rating1" value="1">1 star</option>
+                        <option id="rating2" value="2">2 stars</option>
+                        <option id="rating3" value="3">3 stars</option>
+                        <option id="rating4" value="4">4 stars</option>
+                        <option id="rating5" value="5">5 stars</option>
+                    </select>
+                </li>
+                <li>
+                    <button class="add-btn" type="submit">Add</button>
+                    <button class="cancel-add-btn" type="submit">Cancel</button>
+                </li>
+            </ul>
+        </form>
+        
         <button class="bookmark-add-form-trigger-btn js-add-form-trigger">
             <span class="button-label">ADD NEW</span>
         </button>
@@ -58,7 +92,7 @@
     </main>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="scripts/serializeJson.js"></script>
-    
+    <script type="text/javascript" src="scripts/snackbar.min.js"></script>
     <script type="text/javascript" src="scripts/api.js"></script>
     <script type="text/javascript" src="scripts/store.js"></script>
     <script type="text/javascript" src="scripts/view.js"></script>

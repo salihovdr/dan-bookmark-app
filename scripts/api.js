@@ -19,7 +19,7 @@ const api = (function () {
       contentType: 'application/json',
       data: newBookmark,
       success: callback,
-      error: callback
+      error: Snackbar.show({text: 'Bad request sent...'})
     });
   };
 
@@ -35,6 +35,7 @@ const api = (function () {
     });
   };
 
+  //works
   const deleteBookmark = (id, callback) => {
     $.ajax({
       url: `${BASE_URL}/bookmarks/${id}`,

@@ -3,9 +3,8 @@
 
 $(document).ready(function(){
   bookmarkList.bindEventListeners();
-  bookmarkList.render();
   api.getBookmarks((bookmarks) => {
-    bookmarks.forEach((bookmark) => store.mergeAndAddBookmark({'condensed': true}, bookmark));
+    bookmarks.forEach((bookmark) => store.addBookmark(bookmark));
     //const bookmark = store.bookmarks[1];
     // store.findAndUpdate(bookmark.id, {
     //   'title': 'Yandex',

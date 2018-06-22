@@ -1,18 +1,11 @@
 'use strict';
-/* global Item */
 
 // eslint-disable-next-line no-unused-vars
 const store = (function () {
   //works
-//   const addBookmark = function (bookmarkObj) {
-//     this.bookmarks.push(bookmarkObj);
-//   };
-
-  //works
-  const mergeAndAddBookmark = (obj, apiObj) => {
-    obj = Object.assign(obj, apiObj);
-    store.bookmarks.push(obj);
-
+  const addBookmark = function (bookmarkObj) {
+    bookmarkObj.condensed = true;
+    this.bookmarks.push(bookmarkObj);
   };
 
   //works
@@ -33,20 +26,20 @@ const store = (function () {
 
   //works
   const setFilter = (rating) => {
-    this.filtered = rating;
+    store.filtered = rating;
   };
 
+  //works
   const toggleAddBookmarkForm = () => {
-    this.newItem = true;
+    store.addingStatus = !store.addingStatus;
   };
 
   return {
     bookmarks: [],
     filtered: '',
-    newItem: false,
+    addingStatus: false,
 
-    //addBookmark,
-    mergeAndAddBookmark,
+    addBookmark,
     findById,
     findAndDelete,
     findAndUpdate,

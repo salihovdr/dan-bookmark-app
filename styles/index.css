@@ -3,24 +3,19 @@
 }
 
 body {
-  font-family: 'Source Sans Pro', sans-serif;
-  margin: 20px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin-top: 50px;
   color: #2a2a2a;
 }
 
 h1 {
-  text-transform: uppercase;
   margin: 0;
-  font-size: 6rem;
-  white-space: nowrap;
+  font-size: 4rem;
   text-align: center;
 }
 
 .description {
   margin: 0;
-  font-size: 1em;
-  margin-top: 0.7em;
-  margin-bottom: 0.7em;
 }
 
 main {
@@ -28,9 +23,9 @@ main {
   margin: 20px auto;
 }
 
-#bookmark-form {
-  width: 960px;
-}
+/* #bookmark-form {
+
+} */
 
 #bookmark-form div {
   margin: 10px 0 10px 0;
@@ -52,6 +47,7 @@ ul  {
 
 .checked {
     color: orange;
+    font-size: 0.9rem;
 }
 
 .bookmark-add-form-trigger-btn {
@@ -76,14 +72,8 @@ ul  {
 	background-color: #4f9157;
 }
 
-.hidden {
-  display: none;
-}
-
 .bookmark-title {
-  font-size: 1.5rem;
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin: 0;
 }
 
 .js-delete-x {
@@ -92,4 +82,13 @@ ul  {
 
 .bookmark-item-controls {
   margin-top: 7px;
+}
+
+#bookmark-form {
+  margin-bottom: 30px;
+  border: 1px solid rgb(190, 190, 190);
+}
+
+.rating-radio-btns {
+  display: inline-flex;
 }

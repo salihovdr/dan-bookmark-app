@@ -25,9 +25,6 @@ const bookmarkList = (function () {
                     <button class="bookmark-item-expand js-bookmark-expand">
                         <span class="button-label">toggle view</span>
                     </button>
-                    <button class="bookmark-item-delete js-bookmark-delete">
-                        <span class="button-label">delete</span>
-                    </button>
                 </div>
             <div>
         </li>
@@ -36,17 +33,16 @@ const bookmarkList = (function () {
       return `
         <li class="js-bookmark-element" data-bookmark-id="${bookmark.id}">
             <div class="box">
-                <h2><a href="${ bookmark.url}" target="_blank">${bookmark.title}</a></h2>
-                    ${ratingDisplay}
+                <p class="bookmark-title"><a href="${ bookmark.url}" target="_blank">${bookmark.title}</a></p>
+                    <div class='rating-stars'>
+                        ${ratingDisplay}
+                    </div>
                 <section class="description">
                     <p>${ bookmark.desc}</p>
                 </section>
                 <div class="bookmark-item-controls">
                     <button class="bookmark-item-expand js-bookmark-expand">
                         <span class="button-label">toggle view</span>
-                    </button>
-                    <button class="bookmark-item-edit js-bookmark-edit">
-                        <span class="button-label">edit</span>
                     </button>
                     <button class="bookmark-item-delete js-bookmark-delete">
                         <span class="button-label">delete</span>
@@ -64,51 +60,23 @@ const bookmarkList = (function () {
     return bookmarks.join('');
   }
 
-  const bookmarkAddForm = `        
-  <form id="bookmark-form" class="">
-            <fieldset name="bookmark-info">
+  //works 
+  const renderBookmarkAddForm = () => {
+    if (store.addingStatus) {
+      $('#bookmark-form').show();
+      $('.js-add-form-trigger').hide();
+    }
+    else {
+      $('#bookmark-form').hide();
+      $('.js-add-form-trigger').show();
+    }
+  };
 
-                <legend>Add Bookmark</legend>
-                <div>
-                <label for="bookmark-url">URL</label>
-                <input type="url" name="url" class="js-bookmark-url" placeholder="http://...">
-                </div>
-                <div>
-                <label for="bookmark-title">Title</label>
-                <input type="text" name="title" placeholder="i.e. JS video tutorials">
-                </div>
-                <div>
-                <label for="bookmark-description">Description:</label>
-                <textarea name="desc" rows="4" cols="33" maxlength="600" wrap="hard"></textarea>
-                </div>
-
-                <label for="bookmark-rating">Assign rating</label>
-                <div>
-                    <input type="radio" id="rating1" name="rating" value="1" checked>
-                    <label for="contactChoice1">1 star</label>
-
-                    <input type="radio" id="rating2" name="rating" value="2">
-                    <label for="contactChoice2">2 stars</label>
-
-                    <input type="radio" id="rating3" name="rating" value="3">
-                    <label for="contactChoice3">3 stars</label>
-
-                    <input type="radio" id="rating4" name="rating" value="4">
-                    <label for="contactChoice3">4 stars</label>
-
-                    <input type="radio" id="rating5" name="rating" value="5">
-                    <label for="contactChoice3">5 stars</label>
-                </div>
-            </fieldset>
-
-            <button class="add-btn" type="submit">Add</button>
-        </form>`;
 
   //works
   function render() {
-    if (store.newItem) {
-      $('#form-section').html(bookmarkAddForm);
-    }
+
+    renderBookmarkAddForm();
 
     let bookmarks = store.bookmarks;
     
@@ -120,13 +88,17 @@ const bookmarkList = (function () {
     $('.js-bookmark-list').html(bookmarksString);
   }
 
-  //works
+  //doesn't work with 'submit' event
   function handleNewBookmarkSubmit() {
-    $('#bookmark-form').on('submit', function (event) {
+    $('#bookmark-form').on('click', '.add-btn', function (event) {
       event.preventDefault();
-      const newBookmarkObj = JSON.parse($(event.target).serializeJson());
+
+      const form = $(event.currentTarget).closest('#bookmark-form');
+      const newBookmarkObj = JSON.parse($(form).serializeJson());
+
       api.createBookmark(newBookmarkObj, (newBookmark) => {
         store.addBookmark(newBookmark);
+        store.toggleAddBookmarkForm();
         render();
       });
     });
@@ -148,6 +120,14 @@ const bookmarkList = (function () {
       render();
     });
   }
+  //works
+  function handleAddBookmarkFormTrigger() {
+    $('.bookmark-add-form-trigger-btn').click(event => {
+      console.log('add bookmark clicked!');
+      store.toggleAddBookmarkForm();
+      render();
+    });
+  }
 
   //works
   function handleDeleteBookmark() {
@@ -160,17 +140,17 @@ const bookmarkList = (function () {
     });
   }
 
-  function handleEditBookmark() {
-    $('.js-bookmark-list').on('click', '.js-bookmark-edit', event => {
-      event.preventDefault();
-      const id = getBookmarkIdFromElement(event.currentTarget);
-      const itemName = $(event.currentTarget).find('.shopping-item').val();
-      api.updateBookmark((id, newName) => {
-        store.findAndUpdate(id, { name: itemName });
-        render();
-      });
-    });
-  }
+  //   function handleEditBookmark() {
+  //     $('.js-bookmark-list').on('click', '.js-bookmark-edit', event => {
+  //       event.preventDefault();
+  //       const id = getBookmarkIdFromElement(event.currentTarget);
+  //       const itemName = $(event.currentTarget).find('.shopping-item').val();
+  //       api.updateBookmark((id, newName) => {
+  //         store.findAndUpdate(id, { name: itemName });
+  //         render();
+  //       });
+  //     });
+  //   }
 
   //works
   function handleFilteredByRatingView() {
@@ -186,10 +166,11 @@ const bookmarkList = (function () {
   function bindEventListeners() {
     handleNewBookmarkSubmit();
     handleDeleteBookmark();
-    handleEditBookmark();
+    //handleEditBookmark();
     handleFilterList();
     handleBookmarkToggleCondensed();
     handleFilteredByRatingView();
+    handleAddBookmarkFormTrigger();
   }
 
   // This object contains the only exposed methods from this module:
