@@ -4,40 +4,23 @@
 
 body {
   font-family: 'Source Sans Pro', sans-serif;
+  margin: 20px;
+  color: #2a2a2a;
 }
 
-header {
-  background: 
-    linear-gradient(
-      rgba(0, 0, 0, 0.1),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url(../assets/rawpixel-600780-unsplash.jpg);
-  background-size: cover;
-  height: 50vh;
-}
-
-.title {
-  position: absolute;
-  top: 37%;
-  left: 26%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  text-shadow: 0 5px 0 black;
-}
 h1 {
   text-transform: uppercase;
   margin: 0;
   font-size: 6rem;
   white-space: nowrap;
+  text-align: center;
 }
-h2 {
-  font-size: 2rem;
-}
-p {
+
+.description {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1em;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
 }
 
 main {
@@ -45,32 +28,68 @@ main {
   margin: 20px auto;
 }
 
+#bookmark-form {
+  width: 960px;
+}
+
+#bookmark-form div {
+  margin: 10px 0 10px 0;
+}
 
 .box {
 	border: 1px solid rgb(211, 198, 198);
-	margin-bottom: 17px;
-}
-
-
-.description {
-	padding-left: 20px;
-}
-
-.description > p {
-	font-size: 0.8em;
-	margin-top: 0;
-	margin-bottom: 25px;
-}
-
-.description > h2 {
-	font-size: 0.9em;
-	margin-bottom: 5px;
+  margin-bottom: 17px;
+  padding: 10px;  
 }
 
 ul  {
   list-style: none;
+  padding-left: 0;
+}
+.fa-star {
+  color: grey;
 }
 
 .checked {
     color: orange;
+}
+
+.bookmark-add-form-trigger-btn {
+  display: inline-block;
+	background-color: #68C373;
+	border: 2px solid #68C373;
+	color: white;
+	font-size: 22px;
+	font-weight: 500;
+	margin-top: 20px;
+	margin-bottom: 20px;
+  transition: background-color 0.5s ease;
+  width: 200px;
+	height: 55px;
+	padding: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 3px;
+}
+
+.bookmark-add-form-trigger-btn:hover {
+	background-color: #4f9157;
+}
+
+.hidden {
+  display: none;
+}
+
+.bookmark-title {
+  font-size: 1.5rem;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.js-delete-x {
+  text-align: right;
+}
+
+.bookmark-item-controls {
+  margin-top: 7px;
 }
