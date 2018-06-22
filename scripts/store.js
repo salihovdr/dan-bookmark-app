@@ -8,9 +8,11 @@ const store = (function () {
 //     this.bookmarks.push(bookmarkObj);
 //   };
 
+  //works
   const mergeAndAddBookmark = (obj, apiObj) => {
     obj = Object.assign(obj, apiObj);
     store.bookmarks.push(obj);
+
   };
 
   //works
@@ -29,26 +31,27 @@ const store = (function () {
     currentObj = Object.assign(currentObj, newObj);
   };
 
-  const toggleCheckedFilter = function () {
-    this.hideCheckedItems = !this.hideCheckedItems;
+  //works
+  const setFilter = (rating) => {
+    this.filtered = rating;
   };
 
-  const setSearchTerm = function (term) {
-    this.searchTerm = term;
+  const toggleAddBookmarkForm = () => {
+    this.newItem = true;
   };
 
   return {
     bookmarks: [],
-    hideCheckedItems: false,
-    searchTerm: '',
+    filtered: '',
+    newItem: false,
 
     //addBookmark,
     mergeAndAddBookmark,
     findById,
     findAndDelete,
     findAndUpdate,
-    toggleCheckedFilter,
-    setSearchTerm,
+    setFilter,
+    toggleAddBookmarkForm
   };
 
 }());

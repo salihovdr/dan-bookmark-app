@@ -34,45 +34,7 @@
         </header>
     </div>
     <main role="main">
-        <form id="bookmark-form" class="">
-            <fieldset name="bookmark-info">
-
-                <legend>Add Bookmark</legend>
-                <div>
-                <label for="bookmark-url">URL</label>
-                <input type="url" name="url" class="js-bookmark-url" placeholder="http://...">
-                </div>
-                <div>
-                <label for="bookmark-title">Title</label>
-                <input type="text" name="title" placeholder="i.e. JS video tutorials">
-                </div>
-                <div>
-                <label for="bookmark-description">Description:</label>
-                <textarea name="desc" rows="4" cols="33" maxlength="600" wrap="hard"></textarea>
-                </div>
-
-                <label for="bookmark-rating">Assign rating</label>
-                <div>
-                    <input type="radio" id="rating1" name="rating" value="1" checked>
-                    <label for="contactChoice1">1 star</label>
-
-                    <input type="radio" id="rating2" name="rating" value="2">
-                    <label for="contactChoice2">2 stars</label>
-
-                    <input type="radio" id="rating3" name="rating" value="3">
-                    <label for="contactChoice3">3 stars</label>
-
-                    <input type="radio" id="rating4" name="rating" value="4">
-                    <label for="contactChoice3">4 stars</label>
-
-                    <input type="radio" id="rating5" name="rating" value="5">
-                    <label for="contactChoice3">5 stars</label>
-                </div>
-            </fieldset>
-
-            <button class="add-btn" type="submit">Add</button>
-        </form>
-
+        <section id="form-section"></section>
         <button class="bookmark-add-form-trigger-btn js-add-form-trigger">
             <span class="button-label">ADD NEW</span>
         </button>
@@ -82,36 +44,15 @@
 
             <select id="rating-select">
                 <option value="5">5 stars</option>
-                <option value="4+"> 4+ stars</option>
-                <option value="3+r">3+ star</option>
-                <option value="2+">4+ star</option>
-                <option value="none" selected>Only show...</option>
+                <option value="4">4+ stars</option>
+                <option value="3">3+ star</option>
+                <option value="2">2+ star</option>
+                <option value="" selected>Only show...</option>
             </select>
         </form>
 
         <section role="contentinfo" aria-label="list of bookmarks">
             <ul class="bookmark-list js-bookmark-list">
-                <!-- <li>
-                        <div class="box">
-                                <h2>Rey Protagonist, from Jakku</h2>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <section class="description">
-                                    I'm not going anywhere. They're going to execute her. Look, a few minutes ago you said you didn't want to just wait here
-                                    to be captured. Now all you want to do is stay.
-                                </section>
-                                <div class="bookmark-item-controls">
-                                    <button class="bookmark-item-edit js-bookmark-edit">
-                                        <span class="button-label">edit</span>
-                                    </button>
-                                    <button class="bookmark-item-delete js-bookmark-delete">
-                                        <span class="button-label">delete</span>
-                                    </button>
-                        </div>
-                </li> -->
             </ul>
         </section>
     </main>

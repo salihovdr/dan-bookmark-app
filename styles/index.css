@@ -59,14 +59,14 @@ ul  {
 	background-color: #68C373;
 	border: 2px solid #68C373;
 	color: white;
-	font-size: 22px;
+	font-size: 18px;
 	font-weight: 500;
 	margin-top: 20px;
 	margin-bottom: 20px;
   transition: background-color 0.5s ease;
-  width: 200px;
-	height: 55px;
-	padding: 15px;
+  width: 150px;
+	height: 40px;
+	padding: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 3px;
