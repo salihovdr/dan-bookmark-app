@@ -35,8 +35,8 @@ const store = (function () {
   };
 
   //toggle store.addingStatus Boolean value
-  const toggleAddBookmarkForm = () => {
-    store.addingStatus = !store.addingStatus;
+  const toggleAddBookmarkForm = function() {
+    this.addingStatus = !this.addingStatus;
   };
 
   //return object with store properties and methods
