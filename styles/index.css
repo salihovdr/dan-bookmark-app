@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -94,3 +95,26 @@ ul  {
   display: inline-block;
   float: right;
 }
+
+@media only screen and (max-width: 450px) {
+
+    main {
+      max-width: 80%;
+    }
+
+    .bookmark-add-form-trigger-btn {
+        width: 100%;
+    }
+    #rating-filter-form {
+      width: 100%;
+      text-align: center;
+      float: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    main {
+      max-width: 80%;
+    }
+  }

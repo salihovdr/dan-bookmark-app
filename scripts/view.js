@@ -109,7 +109,7 @@ const bookmarkList = (function () {
 
   //handles addition of new bookmarks to API and store
   const handleNewBookmarkSubmit = () => {
-    $('#bookmark-form').on('click', '.add-btn', function (event) {
+    $('#bookmark-form').on('submit', function (event) {
       event.preventDefault();
 
       const form = $(event.currentTarget).closest('#bookmark-form');
@@ -129,6 +129,13 @@ const bookmarkList = (function () {
       });
     });
   };
+
+  const handleNewBookmarkCancel = () => {
+    $('#bookmark-form').on('click', '.cancel-add-btn',  event => {
+      store.toggleAddBookmarkForm();
+      render();
+    }
+    );};
 
   //gets bookmark object id
   const getBookmarkIdFromElement = (bookmark) => {
@@ -183,6 +190,7 @@ const bookmarkList = (function () {
 
   const bindEventListeners = () => {
     handleNewBookmarkSubmit();
+    handleNewBookmarkCancel();
     handleDeleteBookmark();
     handleBookmarkToggleCondensed();
     handleFilteredByRatingView();
