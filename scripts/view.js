@@ -5,7 +5,7 @@
 const bookmarkList = (function () {
 
   //generate individual bookmark html element
-  function generateBookmarkElement(bookmark) {
+  const generateBookmarkElement = (bookmark) => {
     
     const bookmarkRating = `${bookmark.rating}`;
     
@@ -62,13 +62,13 @@ const bookmarkList = (function () {
         </li>
     `;
     }
-  }
+  };
 
   //combine all bookmark elements together
-  function generateBookmarksString(bookmarksList) {
-    const bookmarks = bookmarksList.map((bookmark) => generateBookmarkElement(bookmark));
+  const generateBookmarksString = (bookmarksList) => {
+    const bookmarks = bookmarksList.map(bookmark => generateBookmarkElement(bookmark));
     return bookmarks.join('');
-  }
+  };
 
   //toggle view of bookmark add form and "Add New" button
   const renderBookmarkAddForm = () => {
@@ -89,7 +89,7 @@ const bookmarkList = (function () {
 
 
   //renders page based on store data
-  function render() {
+  const render = () => {
     
     //renders form/add new button
     renderBookmarkAddForm();
@@ -105,14 +105,15 @@ const bookmarkList = (function () {
     
     //renders generated list of bookmarks in DOM 
     $('.js-bookmark-list').html(bookmarksString);
-  }
+  };
 
   //handles addition of new bookmarks to API and store
-  function handleNewBookmarkSubmit() {
+  const handleNewBookmarkSubmit = () => {
     $('#bookmark-form').on('click', '.add-btn', function (event) {
       event.preventDefault();
 
       const form = $(event.currentTarget).closest('#bookmark-form');
+      
       //collects JSON from form
       const newBookmarkObj = JSON.parse($(form).serializeJson());
       
@@ -127,68 +128,70 @@ const bookmarkList = (function () {
         render();
       });
     });
-  }
+  };
 
   //gets bookmark object id
-  function getBookmarkIdFromElement(bookmark) {
+  const getBookmarkIdFromElement = (bookmark) => {
     return $(bookmark)
       .closest('.js-bookmark-element')
       .data('bookmark-id');
-  }
+  };
 
   //toggles condensed property of individual bookmark
-  function handleBookmarkToggleCondensed() {
+  const handleBookmarkToggleCondensed = () => {
     $('.js-bookmark-list').on('click', '.js-bookmark-expand', event => {
+      
       const id = getBookmarkIdFromElement(event.currentTarget);
       const bookmark = store.findById(id);
+      
       store.findAndUpdate(id, { condensed: !bookmark.condensed });
       render();
     });
-  }
+  };
 
   //handles toggling of store.addingStatus value
   //renders change in DOM
-  function handleAddBookmarkFormTrigger() {
-    $('.bookmark-add-form-trigger-btn').click(event => {
+  const handleAddBookmarkFormTrigger = () => {
+    $('.bookmark-add-form-trigger-btn').click(() => {
       store.toggleAddBookmarkForm();
       render();
     });
-  }
+  };
 
   //handles deleting of bookmark objects from API and store
   //renders change in DOM
-  function handleDeleteBookmark() {
+  const handleDeleteBookmark = () => {
     $('.js-bookmark-list').on('click', '.js-bookmark-delete', event => {
       const id = getBookmarkIdFromElement(event.currentTarget);
+      
       api.deleteBookmark(id, () => {
         store.findAndDelete(id);
         render();
       });
     });
-  }
+  };
 
   //handles display of bookmarks filtered by rating
   //renders change in DOM
-  function handleFilteredByRatingView() {
+  const handleFilteredByRatingView = () => {
     $('#rating-select').on('change', event => {        
       const val = $(event.currentTarget).val();
       store.setFilter(val);
       render();
     });
-  }
+  };
 
-  function bindEventListeners() {
+  const bindEventListeners = () => {
     handleNewBookmarkSubmit();
     handleDeleteBookmark();
     handleBookmarkToggleCondensed();
     handleFilteredByRatingView();
     handleAddBookmarkFormTrigger();
-  }
+  };
 
   // exposes some of the methods from view
   return {
-    render: render,
-    bindEventListeners: bindEventListeners,
+    render, bindEventListeners,
   };
 
 }());
